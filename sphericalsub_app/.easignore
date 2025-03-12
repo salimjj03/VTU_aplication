@@ -1,0 +1,25 @@
+# Ignore dependencies that can be reinstalled
+node_modules/
+.yarn/
+.pnpm-store/
+
+# Ignore build files and cache
+build/
+dist/
+.cache/
+.expo/
+.expo-shared/
+.web/
+
+# Ignore editor and system-specific files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Ignore local environment files
+.env
+.env.local
+.env.development
+.env.production
+

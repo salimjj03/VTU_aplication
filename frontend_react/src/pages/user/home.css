@@ -1,0 +1,9 @@
+.link-hover {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.link-hover:hover {
+    color: #FFD700;
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+}
