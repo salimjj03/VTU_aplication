@@ -16,8 +16,8 @@ from datetime import timedelta
 
 
 app = Flask(__name__)
-app.secret_key = "000000jara"
-app.config["JWT_SECRET_KEY"] = "jjvtu.api_backendjaradat@feb21salimjj"
+app.secret_key = env.get(key[2])
+app.config["JWT_SECRET_KEY"] = env.get(key[1])
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=5)
 jwl = JWTManager(app)
 app.register_blueprint(app_view)
