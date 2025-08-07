@@ -5,10 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea93d70-90be-4bff-87a9-b2cca7d871f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../backend_api/api/v1/views/api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(user)/apiDoc.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(user)/bundle.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eas.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_api/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend_react/src/pages/admin/activity_log.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend_react/src/pages/admin/analysis.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend_react/src/pages/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend_api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend_api/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/apiRequest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/apiRequest.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/adminSummary.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/adminSummary.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/airtime.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/airtime.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/buyAirtime.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/buyAirtime.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/buyData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/buyData.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/data.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/data.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/manualFunding.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/manualFunding.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/network.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/network.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/notification.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/notification.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/sendMoney.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/sendMoney.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/site_info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/site_info.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/switchPlan.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/switchPlan.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/update.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/update.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/components/utility.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/components/utility.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/layout/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/layout/sidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend_react/src/pages/admin/config.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend_react/src/pages/admin/config.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,18 +47,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/salimjj/Documents/VTU/Sphericalsub/sphericalsub_app&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/salimjj/Documents/VTU/spheriacal_server/frontend_react"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-14705d77f0bb-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.25659.43" />
+        <option value="bundled-python-sdk-4c141bd692a7-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.90" />
       </set>
     </attachedChunks>
   </component>

@@ -48,7 +48,7 @@ const Notification = () => {
             if (err?.response?.status === 401) {
                 localStorage.removeItem("data")
                 toast.error("Error: Session expired")
-                navigate("/", {replace: true});
+                navigate("/403_admn_auth25_login", {replace: true});
                 }
             setResponse(err?.response?.data)
             setLoading(false)

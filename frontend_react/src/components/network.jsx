@@ -46,7 +46,7 @@ export default function AddNetwork(){
             if (err.response.status === 401){
                 localStorage.removeItem("data");
                 toast.error("Error: Token Expired");
-                navigate("/", {replace: true});
+                navigate("/403_admn_auth25_login", {replace: true});
                 }
             })
     }

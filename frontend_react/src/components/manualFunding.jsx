@@ -56,12 +56,15 @@ function ManualFunding({ status }) {
         if (err?.response?.status === 401){
             localStorage.removeItem("data")
             toast.error("Error: Session expired")
-            navigate("/", {replace: true});
+            navigate("/403_admn_auth25_login", {replace: true});
             }
       });
   }
 
   return (<>
+
+      { JSON.parse(localStorage.getItem("data"))?.user_name == "admin@sphericalsub" && (
+      <>
       {isConfirm && (
           <ConfirmAlert
           isConfirm={setIsConfirm}
@@ -155,6 +158,8 @@ function ManualFunding({ status }) {
       </form>
       }
   />
+  </>
+  )}
   </>);
 }
 

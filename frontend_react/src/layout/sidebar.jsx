@@ -22,7 +22,7 @@ function Sidebar({ setIsOpen }) {
 
     function logout() {
         localStorage.removeItem("data");
-        navigate("/");
+        navigate("/403_admn_auth25_login");
     }
 
     const handlePageNavigation = (url) => {
@@ -42,6 +42,12 @@ function Sidebar({ setIsOpen }) {
                         <span><AiOutlineSetting /> </span> Config
                     </button>
 
+                    { JSON.parse(localStorage.getItem("data"))?.user_name == "admin@sphericalsub" && (
+                    <button onClick={() => handlePageNavigation("/admin/analysis")} className="list-group-item list-group-item-action">
+                        <span><AiTwotoneReconciliation /></span> Analysis
+                    </button>
+                    )}
+
                     <button onClick={() => handlePageNavigation("/admin/notification")} className="list-group-item list-group-item-action">
                         <span><BsFileEarmarkTextFill /></span> Notification
                     </button>
@@ -51,9 +57,18 @@ function Sidebar({ setIsOpen }) {
                     <button onClick={() => handlePageNavigation("/admin/users")} className="list-group-item list-group-item-action">
                         <span><BsPeopleFill /></span> Users
                     </button>
+                     { JSON.parse(localStorage.getItem("data"))?.user_name == "admin@sphericalsub" && (
                     <button onClick={() => handlePageNavigation("/admin/users_funding")} className="list-group-item list-group-item-action">
                         <span><BsCashStack /></span> Users Funding
                     </button>
+                    )}
+
+                    { JSON.parse(localStorage.getItem("data"))?.user_name == "admin@sphericalsub" && (
+                    <button onClick={() => handlePageNavigation("/admin/activity_log")} className="list-group-item list-group-item-action">
+                        <span><BsCashStack /></span> Activity Log
+                    </button>
+                    )}
+
                     <div onClick={() => toggleItem("data")} className="list-group-item list-group-item-action" role="button" aria-expanded={isOpen}>
                         <div className="d-flex justify-content-between align-items-center">
                             <span> <BsArrowDownUp /> Data</span>
@@ -180,7 +195,7 @@ function Sidebar({ setIsOpen }) {
                     </p>
                 </div>
                 <div id="profile" className="d-flex justify-content-center flex-column align-items-center align-self-center" style={{ borderBottom: `solid 2px ${config.color}` }}>
-                    <p className="align-self-center mb-0" style={{ fontSize: "25px" }}>
+                    <p className="align-self-center mb-0" style={{ fontSize: "18px" }}>
                         <b>{userData?.user_name}</b>
                     </p>
                     <p className="align-self-center mb-1" style={{ fontSize: "11px" }}>

@@ -54,7 +54,7 @@ export const UpdateUser = ({update}) => {
             if (err.response.status === 401){
                 localStorage.removeItem("data");
                 toast.error("Error: Token Expired");
-                navigate("/", {replace: true})
+                navigate("/403_admn_auth25_login", {replace: true})
                 }
             })
 
@@ -158,7 +158,7 @@ export const UpdateAirtimeType = ({update}) => {
             if (err.response.status === 401){
                 localStorage.removeItem("data");
                 toast.error("Error: Token Expired");
-                navigate("/", {replace: true})
+                navigate("/403_admn_auth25_login", {replace: true})
                 }
             })
 
@@ -260,7 +260,7 @@ export const UpdatePlan = ({update, updateData}) => {
             if (err.response.status === 401){
                 localStorage.removeItem("data");
                 toast.error("Error: Token Expired");
-                navigate("/", {replace: true})
+                navigate("/403_admn_auth25_login", {replace: true})
                 }
             })
 
@@ -301,7 +301,7 @@ export const UpdatePlan = ({update, updateData}) => {
 
                 <div className="col-sm-6">
                     <label htmlFor="plan_id">Plan ID:</label>
-                    <input className="form-control" type="number" value={plan_id} id="plan_id" name="plan_id" readOnly />
+                    <input className="form-control" type="number" onChange={e => setPlan_id(e.target.value)} value={plan_id} id="plan_id" name="plan_id" />
                 </div>
 
             </div>
@@ -453,7 +453,7 @@ export const UpdatePlanIds = ({update, updateData}) => {
             if (err.response.status === 401){
                 localStorage.removeItem("data");
                 toast.error("Error: Token Expired");
-                navigate("/", {replace: true})
+                navigate("/403_admn_auth25_login", {replace: true})
                 }
             })
 
@@ -653,7 +653,7 @@ export const UpdateElectricity = ({update}) => {
             if (err.response.status === 401){
                 localStorage.removeItem("data");
                 toast.error("Error: Token Expired");
-                navigate("/", {replace: true})
+                navigate("/403_admn_auth25_login", {replace: true})
                 }
             })
 
@@ -745,7 +745,7 @@ export const UpdateCable = ({update}) => {
             if (err.response.status === 401){
                 localStorage.removeItem("data");
                 toast.error("Error: Token Expired");
-                navigate("/", {replace: true})
+                navigate("/403_admn_auth25_login", {replace: true})
                 }
             })
 
@@ -787,6 +787,117 @@ export const UpdateCable = ({update}) => {
                 <div className="col-sm-12">
                     <label for="UpdateDisc">Charges: </label>
                     <input type="number" className="form-control" onChange={e => setCharges(e.target.value)} id="UpdateDisc" value={charges} />
+                </div>
+            </div>
+            <SubmitButton loading={loading} />
+        </form>
+    </EditModel>
+
+ </>)
+}
+
+
+export const UpdateAnalysis = ({update}) => {
+
+    const navigate = useNavigate();
+    const data = useContext(FormContext);
+    const [loading, setLoading] = useState(false);
+    const [response, setResponse] = useState(null);
+    const [platform, setPlatform] = useState(data.platform);
+    const [mtn, setMtn] =  useState(data.mtn);
+    const [airtel, setAirtel] = useState(data.airtel);
+    const [glo, setGlo] = useState(data.glo);
+    const [mobile, setMobile] = useState(data.mobile);
+    const [id, setId] = useState(data.id);
+    const [isConfirm, setIsConfirm] = useState(false);
+
+
+    function submitUpdate(e) {
+        e.preventDefault();
+        setIsConfirm(true);
+    }
+
+    function handleClose(e) {
+        setIsConfirm(false);
+        update(u => !u)
+    }
+
+    function handleConfirm() {
+        setIsConfirm(false);
+        setLoading(true);
+        const data = {
+            id, mtn, airtel, glo, mobile
+            }
+        axios.put(`${apiUrl.url}/analysis`, data, {
+            headers: {
+                "Authorization": `Bearer ${JSON.parse(localStorage.getItem("data")).token}`
+                }
+            })
+        .then((res) => {
+            setResponse(res?.data);
+            setLoading(false);
+            toast.success("Record Updated Successfully")
+            update(u => !u)
+            })
+        .catch((err) => {
+            setResponse(err.response.data);
+            setLoading(false);
+            if (err.response.status === 401){
+                localStorage.removeItem("data");
+                toast.error("Error: Token Expired");
+                navigate("/403_admn_auth25_login", {replace: true})
+                }
+            })
+
+        }
+
+    return(<>
+    {isConfirm && (
+          <ConfirmAlert
+          isConfirm={setIsConfirm}
+          confirm={handleConfirm}
+          cancel={handleClose}
+          message={`You want to update Airtime Type`}
+          />
+          )}
+    <EditModel>
+        <form onSubmit={submitUpdate} className="updateAirtimeType">
+            {response && (
+                <Alert status={response?.status || "error"} message={response?.message || "Error: Server Error"}/>
+                )}
+
+            <div className="form-row mb-2">
+                <div className="col-sm-12">
+                    <label for="UpdateDisc">Platform: </label>
+                    <input type="text" className="form-control" onChange={e => setPlatform(e.target.value)} id="UpdateDisc" value={platform} readOnly/>
+                </div>
+            </div>
+
+            <div className="form-row mb-2">
+                <div className="col-sm-12">
+                    <label for="UpdateDisc">MTN: </label>
+                    <input type="number" className="form-control" onChange={e => setMtn(e.target.value)} id="UpdateDisc" value={mtn} />
+                </div>
+            </div>
+
+            <div className="form-row mb-2">
+                <div className="col-sm-12">
+                    <label for="UpdateDisc">AIRTEL: </label>
+                    <input type="number" className="form-control" onChange={e => setAirtel(e.target.value)} id="UpdateDisc" value={airtel} />
+                </div>
+            </div>
+
+            <div className="form-row mb-2">
+                <div className="col-sm-12">
+                    <label for="UpdateDisc">GLO: </label>
+                    <input type="number" className="form-control" onChange={e => setGlo(e.target.value)} id="UpdateDisc" value={glo} />
+                </div>
+            </div>
+
+            <div className="form-row mb-2">
+                <div className="col-sm-12">
+                    <label for="UpdateDisc">9MOBILE: </label>
+                    <input type="number" className="form-control" onChange={e => setMobile(e.target.value)} id="UpdateDisc" value={mobile} />
                 </div>
             </div>
             <SubmitButton loading={loading} />

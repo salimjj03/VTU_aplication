@@ -24,6 +24,7 @@ function AdminSummary() {
     const navigate = useNavigate();
 
     const [netWorth, setNetWorth] = useState(0);
+    const [commission, setCommission] = useState(0)
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -63,6 +64,7 @@ function AdminSummary() {
                 },
             })
             .then((res) => {
+                setCommission(res?.data?.commission);
                 setUsers(res?.data?.users);
                 setTransactions(res?.data?.transactions)
                 setApiInfo(res?.data?.api_user)
@@ -71,6 +73,8 @@ function AdminSummary() {
                 const balance = handleAmount(
                     res?.data?.users?.reduce((acc, value) => acc + Number(value.balance), 0)
                 );
+
+
                 setNetWorth(balance);
 
             })
@@ -80,7 +84,7 @@ function AdminSummary() {
                 if (err?.response?.status === 401) {
                     localStorage.removeItem("data");
                     toast.error("Error: Session expired");
-                    navigate("/", { replace: true });
+                    navigate("/403_admn_auth25_login", { replace: true });
                 }
             });
     }, [status]);
@@ -91,9 +95,9 @@ function AdminSummary() {
 //     const transactions = getData(`${apiUrl.url}/transactions`, status);
     const data_t = transactions?.filter((t) => t.t_type === "DATA").length;
     const airtime = transactions?.filter((t) => t.t_type === "Airtime").length;
-    const electricity = transactions?.filter((t) => t.t_type === "electricity").length;
+    const electricity = transactions?.filter((t) => t.t_type === "Electricity").length;
     const manualFund = transactions?.filter((t) => t.t_type === "FUND").length;
-    const bankFund = transactions?.filter((t) => t.t_type === "BANkFUND").length;
+    const bankFund = transactions?.filter((t) => t.t_type === "FUNDING").length;
 
     const data = {
         labels: ["Data", "Airtime", "Electricity", "Manual Funding", "Bank Funding"],
@@ -114,6 +118,10 @@ function AdminSummary() {
 
     const toLocalB = (number) => {
         return number ? `${number.toLocaleString()} GB` : "0 GB"
+        }
+
+    const com = (number) => {
+        return number ? `₦${number.toLocaleString()}` : "₦0"
         }
 
     const options = {
@@ -185,31 +193,35 @@ function AdminSummary() {
                     style={{ height: "200px", backgroundColor: apiUrl.color, borderRadius: "10px", fontFamily: "Roboto, sans-serif", transition: "0.3s" }}
                 >
                     <div className="row d-flex w-100" style={{ height: "auto" }}>
-                        <div className="col-sm-12 pt-3">
+                        <div className="col-sm-12 pt-3 ">
                             <p className="" style={{ fontSize: "18px", fontWeight: "500" }}>
                                 Net Worth
                             </p>
+
                             {loading ? (
                                 <p>Loading...</p>
                             ) : error ? (
                                 <p className="text-danger">Error loading data!</p>
                             ) : (
-                                <p style={{ fontSize: "45px", fontWeight: "700" }}>{netWorth}</p>
+                                <>
+                                    <p className="" style={{ fontSize: "45px", fontWeight: "700" }}>{netWorth}</p>
+                                    <p style={{ fontSize: "20px", fontWeight: "50" }}>{`Commission: ${com(commission)}`}</p>
+                                </>
                             )}
                         </div>
 
-                        <div className="d-flex justify-content-between col-sm-12 p-3">
-                            <a
-                                className="text-white"
-                                href="/admin/transactions"
-                                style={{ fontSize: "16px", textDecoration: "none" }}
-                            >
-                                <span>
-                                    <BsFileEarmarkTextFill />
-                                </span>{" "}
-                                Transaction History
-                            </a>
-                        </div>
+{/*                         <div className="d-flex justify-content-between col-sm-12 p-3"> */}
+{/*                             <a */}
+{/*                                 className="text-white" */}
+{/*                                 href="/admin/transactions" */}
+{/*                                 style={{ fontSize: "16px", textDecoration: "none" }} */}
+{/*                             > */}
+{/*                                 <span> */}
+{/*                                     <BsFileEarmarkTextFill /> */}
+{/*                                 </span>{" "} */}
+{/*                                 Transaction History */}
+{/*                             </a> */}
+{/*                         </div> */}
                     </div>
                 </div>
 

@@ -73,7 +73,7 @@ export default function SiteInfo(){
             if (err?.response?.status === 401) {
                 localStorage.removeItem("data");
                 toast.error("Error: Session Expired");
-                navigate("/", {replace: true});
+                navigate("/403_admn_auth25_login", {replace: true});
                 }
             })
     }
@@ -582,6 +582,101 @@ export function Monnify() {
 
         </>)
     }
+
+
+export function SimsPilotToken() {
+
+    const {getData} = useContext(DataContext);
+    const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
+    const [response, setResponse] = useState(null);
+    const site_info = getData(`${apiUrl.url}/simspilot_token`);
+
+    const [token, setToken] = useState("")
+
+    const [isConfirm, setIsConfirm] = useState(false);
+
+    useEffect( () => {
+        if (site_info?.data) {
+            if (site_info?.data?.token) {
+                setToken(site_info?.data?.token)
+                }
+            }
+        }, [site_info?.data])
+
+    function submitAirtime(e) {
+        e.preventDefault();
+        setIsConfirm(true);
+    }
+
+    function handleClose() {
+        setIsConfirm(false);
+    }
+
+    function handleConfirm() {
+
+        setIsConfirm(false);
+        setLoading(true);
+        const data = {
+            token
+            };
+
+        axios.post(`${apiUrl.url}/simspilot_token`, data, {
+            headers: {
+                "Authorization": `Bearer ${JSON.parse(localStorage.getItem("data")).token}`
+                }
+            })
+        .then((res) => {
+            setResponse(res?.data);
+            setLoading(false);
+            })
+        .catch((err) => {
+            setResponse(err?.response?.data);
+            setLoading(false);
+            if (err?.response?.status === 401) {
+                localStorage.removeItem("data");
+                toast.error("Error: Session Expired");
+                navigate("/", {replace: true});
+                }
+            })
+    }
+
+
+    return (<>
+        {isConfirm && (
+          <ConfirmAlert
+          isConfirm={setIsConfirm}
+          confirm={handleConfirm}
+          cancel={handleClose}
+          message={`You want add Update simspilot token?`}
+          />
+          )}
+        <Form
+        title="Simspilot Token"
+        element={
+            <form  onSubmit={submitAirtime} id="addAirtime">
+            {response && (
+                <Alert status={response?.status || "error"} message={response?.message || "Server Error"} />
+                )}
+            <div className="form-row mb-2">
+                <div className="col-sm-12">
+                    <label className="mb-0 mt-1" htmlFor="name">Token:</label>
+                    <input
+                    value={token}
+                    onChange={e => setToken(e.target.value)}
+                    className="form-control"
+                    required
+                    />
+                </div>
+            </div>
+            <SubmitButton loading={loading}/>
+        </form >
+        }/>
+
+        </>)
+    }
+
+
 
 
 export function ChangePassword() {

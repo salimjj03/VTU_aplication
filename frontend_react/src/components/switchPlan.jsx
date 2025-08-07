@@ -52,6 +52,11 @@ function SwitchPlan() {
         .catch((err) => {
             setResponse(err?.response?.data);
             setLoading(false);
+            if (err?.response?.status === 401) {
+                localStorage.removeItem("data");
+                toast.error("Error: Session Expired")
+                navigate("/403_admn_auth25_login", {replace: true});
+                }
         });
     }
 
@@ -74,6 +79,11 @@ function SwitchPlan() {
         .catch((err) => {
             setResponse(err?.response?.data);
             setLoading(false);
+            if (err?.response?.status === 401) {
+                localStorage.removeItem("data");
+                toast.error("Error: Session Expired")
+                navigate("/403_admn_auth25_login", {replace: true});
+                }
         });
     }
 

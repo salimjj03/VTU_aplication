@@ -47,7 +47,7 @@ export default function AddAirtime() {
             if (err?.response?.status === 401) {
                 localStorage.removeItem("data");
                 toast.error("Error: Session Expired");
-                navigate("/", {replace: true});
+                navigate("/403_admn_auth25_login", {replace: true});
                 }
             })
     }
